@@ -56,7 +56,7 @@ const Navbar = () => {
             },
           }}
         >
-          Sociopedia
+          Deepbook
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
