@@ -27,8 +27,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
-    devTools:false
+    })
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
