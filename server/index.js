@@ -17,6 +17,7 @@ import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import { users, posts } from "./data/index.js";
+import { send } from "process";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -46,6 +47,9 @@ const upload = multer({ storage });
 /* ROUTES WITH FILES */
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
+app.get('/', function(req, res) {
+  res.send('hello world');
+});
 
 /* ROUTES */
 app.use("/auth", authRoutes);
@@ -54,6 +58,7 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
+mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
